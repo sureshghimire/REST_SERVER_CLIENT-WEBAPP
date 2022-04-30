@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 
-const PORT = process.env.PORT   ||  8888 
+const PORT = process.env.PORT || 8888 
 
 const collection = require('./db/Story')
 
