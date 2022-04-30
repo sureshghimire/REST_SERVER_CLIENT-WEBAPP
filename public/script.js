@@ -1,4 +1,4 @@
-const charge =(e)=>{
+const save =(e)=>{
     e.preventDefault();
 
     let title= document.getElementById('title').value;
@@ -14,9 +14,8 @@ const charge =(e)=>{
         "description":desc
     }
   
-    
-
-    fetch('/stories',{
+    if(!!story.title|| !!story.author|| !!story.description){
+      fetch('/stories',{
         method: 'POST',
         headers: {
             Accept: "application/json, text/plain, */*",
@@ -33,6 +32,10 @@ const charge =(e)=>{
         input.value='';
     })
     document.getElementById('desc').value="";
+      
+    }    
+
+    
   }
 
 const showAll =()=>{
@@ -79,6 +82,17 @@ const showAll =()=>{
     console.log()
 }
 
-  document.getElementById('save-btn').addEventListener('click', charge)
+let count=0;
+
+
+window.setInterval(()=>{
+  count++;
+  document.querySelector('h5').innerHTML = count;
+  
+},1000)
+
+
+  
+  document.getElementById('save-btn').addEventListener('click', save)
   document.getElementById('show-all').addEventListener('click', showAll)
  
