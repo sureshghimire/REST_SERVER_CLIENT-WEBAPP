@@ -11,19 +11,19 @@ const PORT = process.env.PORT || 8888
 
 const collection = require('./db/Story')
 
-app.get('/stories', (req, res)=>{
-    const all = collection.all();
+app.get('/stories', async (req, res)=>{
+    const all = await collection.all();
     res.json(all);
 })
 
-app.post('/stories', (req, res)=>{
+app.post('/stories', async (req, res)=>{
     try {
         const body = req.body;
 
         // below is roughly equal to saying Object.assign(body, { author: req.user.username})
         const data = { ...body };
 
-        const story = collection.add(data);
+        const story = await collection.add(data);
         
         res.status(201).json(story);
     } catch (error) {
