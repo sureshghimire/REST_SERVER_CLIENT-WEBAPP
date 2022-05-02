@@ -1,4 +1,4 @@
-const save =(e)=>{
+const save =async (e)=>{
     e.preventDefault();
 
     let title= document.getElementById('title').value;
@@ -15,7 +15,7 @@ const save =(e)=>{
     }
   
     if(!!story.title|| !!story.author|| !!story.description){
-      fetch('/stories',{
+      await fetch('/stories',{
         method: 'POST',
         headers: {
             Accept: "application/json, text/plain, */*",
@@ -38,8 +38,8 @@ const save =(e)=>{
     
   }
 
-const showAll =()=>{
-    fetch('/stories',{
+const showAll =async ()=>{
+    await fetch('/stories',{
         method:'GET',
         headers:{
             'Content-Type': 'application/json'
